@@ -42,22 +42,59 @@ namespace Stuuwy
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            try {
-                String firstName = textBox1.Text;
-                String lastName = textBox2.Text;
-                String userName = textBox3.Text;
-                String password = textBox4.Text;
-                String con_password = textBox5.Text;
-                String email = textBox6.Text;
-
-                String query = "INSERT INTO Registered_Users (firstName,lastName,userName,password,email) VALUES ('" + firstName + "','" + lastName + "','" + userName + "','" + password + "','" + email + "')";
-                SqlCommand cmd = new SqlCommand(query, con);
-                int count = cmd.ExecuteNonQuery();
-            }
-            catch(System.Exception exp)
+            //Proverka na userName i email pri registracija - ako se zafateni obidise so drugo userName ili drug email
+            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName='" + textBox3.Text + "' OR email='" + textBox6.Text + "'", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count >= 1) // Ako postoi barem 1 kolona so takvi userName OR email
             {
-                MessageBox.Show("Enter username and password." + exp.ToString(), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                label1.Text = "Username or email are already taken.";
+                MessageBox.Show("Username or email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
+            else if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
+            {
+                label1.Text = "All field's are required.";
+                MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+            }
+            else if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite [0-ednakvi,1-prviot pomal od vtoriot,-1-vtoriot pogolem od prviot]
+            {
+                textBox4.Text = "";
+                textBox5.Text = "";
+                textBox4.Focus();
+                label1.Text = "Password don't match.";
+                MessageBox.Show("Password don't match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+
+            }
+            else if (emailValidation)
+            {
+                try
+                {
+                    // Dodeluvanje na vrednosti od textBox-ovite vo string
+                    String firstName = textBox1.Text;
+                    String lastName = textBox2.Text;
+                    String userName = textBox3.Text;
+                    String password = textBox4.Text;
+                    String con_password = textBox5.Text;
+                    String email = textBox6.Text;
+
+                    String query = "INSERT INTO Registered_Users (firstName,lastName,userName,password,email) VALUES ('" + firstName + "','" + lastName + "','" + userName + "','" + password + "','" + email + "')";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    int count = cmd.ExecuteNonQuery();
+                    MessageBox.Show("You were registered successufully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearTextBox();
+                    show_loginForm();
+                }
+                catch (System.Exception exp)
+                {
+                    MessageBox.Show("Enter username and password." + exp.ToString(), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                }
+            } 
+            else // nepredviden slucaj
+            {
+                label1.Text = "Something went wrong.";
+                MessageBox.Show("Something went wrong,please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+            }
+            
         }
         //Metodi
         private void clearTextBox() // metod za brisenje na podatocite vo textBox-ovite
