@@ -13,7 +13,7 @@ namespace Stuuwy
 {
     public partial class loginForm : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True"); // konekciski string so data bazata
         int count = 0;
         public loginForm()
         {
@@ -24,7 +24,7 @@ namespace Stuuwy
         {
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Librarian WHERE username='" +textBox1.Text + "' AND password ='" + textBox2.Text + "'";
+            cmd.CommandText = "SELECT * FROM Librarian WHERE username='" + textBox1.Text + "' AND password ='" + textBox2.Text + "'";
             cmd.ExecuteNonQuery(); // metod koj se koristi za manipuliranje podatoci vo databaza i se koristi vo naredbi bez rezultat kako CREATE,INSERT,UPDATE,DELETE,SELECT ...
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -63,6 +63,13 @@ namespace Stuuwy
                 con.Close(); // zatvorija
             }
             con.Open(); //..vo sprotivno otvorija
+        }
+
+        private void label4_Click(object sender, EventArgs e) // registriranje
+        {
+            this.Hide();
+            Register_Form rf = new Register_Form();
+            rf.Show();
         }
     }
 }
