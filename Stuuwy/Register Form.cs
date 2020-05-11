@@ -56,7 +56,7 @@ namespace Stuuwy
                 label1.Text = "All field's are required.";
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
-            else if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite [0-ednakvi,1-prviot pomal od vtoriot,-1-vtoriot pogolem od prviot]
+            else if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite 
             {
                 textBox4.Text = "";
                 textBox5.Text = "";
@@ -81,12 +81,13 @@ namespace Stuuwy
                     SqlCommand cmd = new SqlCommand(query, con);
                     int count = cmd.ExecuteNonQuery();
                     MessageBox.Show("You were registered successufully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clearTextBox();
-                    show_loginForm();
+                    ClearTextBox();
+                    Show_loginForm();
                 }
                 catch (System.Exception exp)
                 {
-                    MessageBox.Show("Enter username and password." + exp.ToString(), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    label1.Text = "Something went wrong.";
+                    MessageBox.Show("Something went wrong,please try again." + exp.ToString(), "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 }
             } 
             else // nepredviden slucaj
@@ -97,7 +98,7 @@ namespace Stuuwy
             
         }
         //Metodi
-        private void clearTextBox() // metod za brisenje na podatocite vo textBox-ovite
+        private void ClearTextBox() // metod za brisenje na podatocite vo textBox-ovite
         {
             textBox1.Text = "";
             textBox2.Text = "";
@@ -106,11 +107,17 @@ namespace Stuuwy
             textBox5.Text = "";
             textBox6.Text = "";
         }
-        private void show_loginForm() // loadiranje na loginForm
+        private void Show_loginForm() // loadiranje na loginForm
         {
             this.Hide();
             loginForm lf = new loginForm();
             lf.Show();
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                button1_Click(sender, e);
         }
     }
 }

@@ -71,5 +71,11 @@ namespace Stuuwy
             Register_Form rf = new Register_Form();
             rf.Show();
         }
+
+        private void TextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                button1_Click(sender, e);
+        }
     }
 }

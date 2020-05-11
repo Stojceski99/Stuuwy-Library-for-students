@@ -93,6 +93,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(169, 20);
             this.textBox6.TabIndex = 13;
+            this.textBox6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             this.textBox6.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
             // textBox5
@@ -103,6 +104,7 @@
             this.textBox5.PasswordChar = '*';
             this.textBox5.Size = new System.Drawing.Size(169, 20);
             this.textBox5.TabIndex = 12;
+            this.textBox5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // textBox4
             // 
@@ -112,6 +114,7 @@
             this.textBox4.PasswordChar = '*';
             this.textBox4.Size = new System.Drawing.Size(169, 20);
             this.textBox4.TabIndex = 11;
+            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // textBox3
             // 
@@ -120,6 +123,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(169, 20);
             this.textBox3.TabIndex = 10;
+            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // textBox2
             // 
@@ -128,6 +132,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(169, 20);
             this.textBox2.TabIndex = 9;
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // textBox1
             // 
@@ -136,6 +141,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(169, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // label5
             // 

@@ -91,6 +91,7 @@
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(174, 22);
             this.textBox2.TabIndex = 5;
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyUp);
             // 
             // textBox1
             // 
@@ -98,13 +99,14 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(174, 20);
             this.textBox1.TabIndex = 4;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyUp);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label3.Location = new System.Drawing.Point(147, 190);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(124, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 16);
             this.label3.TabIndex = 3;
