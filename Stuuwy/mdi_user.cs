@@ -107,8 +107,13 @@ namespace Stuuwy
         private void addNewBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             add_books ab = new add_books();
-            this.Hide();
             ab.Show();
         }
+
+        private void viewBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            view_books vb = new view_books();
+            vb.Show();
+        } 
     }
 }

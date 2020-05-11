@@ -18,7 +18,6 @@ namespace Stuuwy
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             //Proverka na bookName AND bookAuthor pri vnes - ako se zafateni obidise so drugo bookName ili drug bookAuthor
@@ -30,14 +29,14 @@ namespace Stuuwy
                 label7.Text = "That book is already in database.";
                 MessageBox.Show("That book is already in database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
-            else if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
+            else if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || dateTimePicker1.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
             {
                 label7.Text = "All field's are required.";
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
             else if (dt.Rows.Count == 0)
             {
-                String query = "INSERT INTO Book_Information VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "'," + textBox5.Text + "," + textBox6.Text + ")";
+                String query = "INSERT INTO Book_Information VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + dateTimePicker1.Text + "'," + textBox5.Text + "," + textBox6.Text + ")";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Book was added successufully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -55,7 +54,6 @@ namespace Stuuwy
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
-            textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
         }
@@ -74,6 +72,7 @@ namespace Stuuwy
             }
             con.Open(); //..vo sprotivno otvorija
         }
+        //Metodi
     }
 
 }

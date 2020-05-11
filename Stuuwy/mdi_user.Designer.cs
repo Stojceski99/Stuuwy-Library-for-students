@@ -35,6 +35,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.bookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,8 @@
             // bookToolStripMenuItem
             // 
             this.bookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewBookToolStripMenuItem});
+            this.addNewBookToolStripMenuItem,
+            this.viewBooksToolStripMenuItem});
             this.bookToolStripMenuItem.Name = "bookToolStripMenuItem";
             this.bookToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.bookToolStripMenuItem.Text = "Book";
@@ -79,6 +81,13 @@
             this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNewBookToolStripMenuItem.Text = "Add New Book";
             this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
+            // 
+            // viewBooksToolStripMenuItem
+            // 
+            this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
+            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewBooksToolStripMenuItem.Text = "View Books";
+            this.viewBooksToolStripMenuItem.Click += new System.EventHandler(this.viewBooksToolStripMenuItem_Click);
             // 
             // mdi_user
             // 
@@ -110,6 +119,7 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewBooksToolStripMenuItem;
     }
 }
 
