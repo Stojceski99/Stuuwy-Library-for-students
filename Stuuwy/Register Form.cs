@@ -69,17 +69,9 @@ namespace Stuuwy
             {
                 try
                 {
-                    // Dodeluvanje na vrednosti od textBox-ovite vo string
-                    String firstName = textBox1.Text;
-                    String lastName = textBox2.Text;
-                    String userName = textBox3.Text;
-                    String password = textBox4.Text;
-                    String con_password = textBox5.Text;
-                    String email = textBox6.Text;
-
-                    String query = "INSERT INTO Registered_Users (firstName,lastName,userName,password,email) VALUES ('" + firstName + "','" + lastName + "','" + userName + "','" + password + "','" + email + "')";
+                    String query = "INSERT INTO Registered_Users (firstName,lastName,userName,password,email) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox6.Text + "')";
                     SqlCommand cmd = new SqlCommand(query, con);
-                    int count = cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("You were registered successufully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearTextBox();
                     Show_loginForm();
