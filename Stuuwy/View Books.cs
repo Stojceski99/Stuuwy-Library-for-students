@@ -98,8 +98,41 @@ namespace Stuuwy
 
         private void textBox2_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 13)
+            if (e.KeyValue == 13) // ENTER
                 button2_Click(sender, e);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Za sekoja kolona selektirana od datagridView da se pretstavaat soodvetnite vrednosti vo textBox-ovite.
+            int i;
+            i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            try
+            {
+                con.Open();
+                String query = "SELECT * FROM Book_Information WHERE ID ="+ i +"";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                foreach (DataRow dr in dt.Rows) // Za sekoj red vo dt[DataTable] da se prikazat vrednostite:
+                {
+                    txt_BookName.Text = dr["bookName"].ToString();
+                    txt_AuthorName.Text = dr["bookAuthor"].ToString();
+                    txt_PublisherName.Text = dr["bookPublisherName"].ToString();
+                    dateTimePicker1.Text = (dr["bookPurchaseDate"].ToString()); // dateTimePicker1.Text = Convert.ToDateTime((dr["bookPurchaseDate"].ToString())); -> ERROR ????
+                    txt_Price.Text = dr["bookPrice"].ToString();
+                    txt_Quantity.Text = dr["bookQuantity"].ToString();
+                }
+
+                con.Close();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
     }
 }
