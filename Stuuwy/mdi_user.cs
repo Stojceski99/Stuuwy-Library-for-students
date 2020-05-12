@@ -114,6 +114,12 @@ namespace Stuuwy
         {
             view_books vb = new view_books();
             vb.Show();
-        } 
+        }
+
+        private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            add_Student_info ad = new add_Student_info();
+            ad.Show();
+        }
     }
 }
