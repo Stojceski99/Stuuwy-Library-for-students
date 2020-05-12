@@ -20,22 +20,7 @@ namespace Stuuwy
 
         private void view_books_Load(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                String query = "SELECT * FROM Book_Information";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                dataGridView1.DataSource = dt; // data grid se polni so informacii od Book_Information
-                con.Close();
-            }
-            catch(Exception exp)
-            {
-                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  
-            }
+            Display_Grid();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -104,6 +89,7 @@ namespace Stuuwy
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            panel4.Visible = true;
             // Za sekoja kolona selektirana od datagridView da se pretstavaat soodvetnite vrednosti vo textBox-ovite.
             int i;
             i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
@@ -133,6 +119,47 @@ namespace Stuuwy
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i;
+            i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            try
+            {
+                con.Open();
+                String query = "UPDATE  Book_Information SET bookName='"+ txt_BookName.Text +"',bookAuthor='"+ txt_AuthorName.Text +"',bookPublisherName='"+ txt_PublisherName.Text +"',bookPurchaseDate='"+ dateTimePicker1.Value.ToString() +"',bookPrice="+ txt_Price.Text +",bookQuantity='"+ txt_Quantity.Text+"' WHERE ID ="+i+"";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Display_Grid();
+                MessageBox.Show("Record updated successfully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel4.Visible = false;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Metodi
+        private void Display_Grid()
+        {
+            try
+            {
+                con.Open();
+                String query = "SELECT * FROM Book_Information";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                dataGridView1.DataSource = dt; // data grid se polni so informacii od Book_Information
+                con.Close();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
