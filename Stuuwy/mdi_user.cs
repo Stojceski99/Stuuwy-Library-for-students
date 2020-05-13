@@ -121,5 +121,11 @@ namespace Stuuwy
             add_Student_info ad = new add_Student_info();
             ad.Show();
         }
+
+        private void viewStudentInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            View_Student_Information vs = new View_Student_Information();
+            vs.Show();
+        }
     }
 }
