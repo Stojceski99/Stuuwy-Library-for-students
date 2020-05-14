@@ -24,7 +24,7 @@ namespace Stuuwy
         {
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Librarian WHERE userName='" + textBox1.Text + "' AND password ='" + textBox2.Text + "'";
+            cmd.CommandText = "SELECT * FROM Librarian WHERE userName COLLATE Latin1_general_CS_AS ='" + textBox1.Text + "' AND password COLLATE Latin1_general_CS_AS ='" + textBox2.Text + "'";
             cmd.ExecuteNonQuery(); // metod koj se koristi za manipuliranje podatoci vo databaza i se koristi vo naredbi bez rezultat kako CREATE,INSERT,UPDATE,DELETE,SELECT ...
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

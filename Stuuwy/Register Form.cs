@@ -43,7 +43,7 @@ namespace Stuuwy
         private void button1_Click(object sender, EventArgs e)
         {
             //Proverka na userName i email pri registracija - ako se zafateni obidise so drugo userName ili drug email
-            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName='" + textBox3.Text + "' OR email='" + textBox6.Text + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName COLLATE Latin1_general_CS_AS ='" + textBox3.Text + "' OR email COLLATE Latin1_general_CS_AS ='" + textBox6.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1) // Ako postoi barem 1 kolona so takvi userName OR email
