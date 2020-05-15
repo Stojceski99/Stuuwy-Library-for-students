@@ -50,22 +50,24 @@ namespace Stuuwy
             {
                 label1.Text = "Username or email are already taken.";
                 MessageBox.Show("Username or email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+                return;
             }
-            else if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
+            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
             {
                 label1.Text = "All field's are required.";
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+                return;
             }
-            else if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite 
+            if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite 
             {
                 textBox4.Text = "";
                 textBox5.Text = "";
                 textBox4.Focus();
                 label1.Text = "Password don't match.";
                 MessageBox.Show("Password don't match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
-
+                return;
             }
-            else if (emailValidation)
+            if (emailValidation)
             {
                 try
                 {

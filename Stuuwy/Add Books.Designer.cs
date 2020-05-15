@@ -75,7 +75,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy,ddd";
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(198, 345);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -110,66 +110,66 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label6.Location = new System.Drawing.Point(68, 459);
+            this.label6.Location = new System.Drawing.Point(68, 460);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 16);
+            this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 24;
-            this.label6.Text = "Quatity:";
+            this.label6.Text = "Quatity";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label5.Location = new System.Drawing.Point(68, 404);
+            this.label5.Location = new System.Drawing.Point(68, 405);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 16);
+            this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 23;
-            this.label5.Text = "Price:";
+            this.label5.Text = "Price";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label4.Location = new System.Drawing.Point(16, 349);
+            this.label4.Location = new System.Drawing.Point(68, 349);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 16);
+            this.label4.Size = new System.Drawing.Size(108, 16);
             this.label4.TabIndex = 22;
-            this.label4.Text = "Purchase date:";
+            this.label4.Text = "Purchase date";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label3.Location = new System.Drawing.Point(68, 298);
+            this.label3.Location = new System.Drawing.Point(68, 299);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(73, 16);
             this.label3.TabIndex = 21;
-            this.label3.Text = "Publisher:";
+            this.label3.Text = "Publisher";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label2.Location = new System.Drawing.Point(67, 248);
+            this.label2.Location = new System.Drawing.Point(68, 252);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Author:";
+            this.label2.Text = "Author";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label1.Location = new System.Drawing.Point(67, 194);
+            this.label1.Location = new System.Drawing.Point(68, 194);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 16);
+            this.label1.Size = new System.Drawing.Size(86, 16);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Book name:";
+            this.label1.Text = "Book name";
             // 
             // textBox6
             // 
@@ -178,6 +178,7 @@
             this.textBox6.Size = new System.Drawing.Size(133, 20);
             this.textBox6.TabIndex = 18;
             this.textBox6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
+            this.textBox6.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
             // textBox5
             // 
@@ -186,6 +187,7 @@
             this.textBox5.Size = new System.Drawing.Size(133, 20);
             this.textBox5.TabIndex = 17;
             this.textBox5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
+            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // textBox3
             // 
@@ -194,6 +196,7 @@
             this.textBox3.Size = new System.Drawing.Size(133, 20);
             this.textBox3.TabIndex = 15;
             this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // textBox2
             // 
@@ -202,6 +205,7 @@
             this.textBox2.Size = new System.Drawing.Size(133, 20);
             this.textBox2.TabIndex = 14;
             this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox1
             // 
@@ -210,6 +214,7 @@
             this.textBox1.Size = new System.Drawing.Size(133, 20);
             this.textBox1.TabIndex = 13;
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox6_KeyUp);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // pictureBox1
             // 

@@ -57,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -68,6 +69,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label4);
@@ -119,9 +121,11 @@
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy,dddd";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(483, 18);
+            this.dateTimePicker1.MaxDate = new System.DateTime(9988, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(160, 20);
             this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker1.Value = new System.DateTime(2020, 5, 15, 0, 0, 0, 0);
             // 
             // button3
             // 
@@ -142,6 +146,7 @@
             this.txt_Quantity.Name = "txt_Quantity";
             this.txt_Quantity.Size = new System.Drawing.Size(160, 20);
             this.txt_Quantity.TabIndex = 10;
+            this.txt_Quantity.Leave += new System.EventHandler(this.txt_Quantity_Leave);
             // 
             // txt_Price
             // 
@@ -149,6 +154,7 @@
             this.txt_Price.Name = "txt_Price";
             this.txt_Price.Size = new System.Drawing.Size(160, 20);
             this.txt_Price.TabIndex = 9;
+            this.txt_Price.Leave += new System.EventHandler(this.txt_Price_Leave);
             // 
             // txt_PublisherName
             // 
@@ -156,6 +162,7 @@
             this.txt_PublisherName.Name = "txt_PublisherName";
             this.txt_PublisherName.Size = new System.Drawing.Size(160, 20);
             this.txt_PublisherName.TabIndex = 8;
+            this.txt_PublisherName.Leave += new System.EventHandler(this.txt_PublisherName_Leave);
             // 
             // txt_AuthorName
             // 
@@ -163,6 +170,7 @@
             this.txt_AuthorName.Name = "txt_AuthorName";
             this.txt_AuthorName.Size = new System.Drawing.Size(160, 20);
             this.txt_AuthorName.TabIndex = 7;
+            this.txt_AuthorName.Leave += new System.EventHandler(this.txt_AuthorName_Leave);
             // 
             // txt_BookName
             // 
@@ -170,6 +178,7 @@
             this.txt_BookName.Name = "txt_BookName";
             this.txt_BookName.Size = new System.Drawing.Size(160, 20);
             this.txt_BookName.TabIndex = 6;
+            this.txt_BookName.Leave += new System.EventHandler(this.txt_BookName_Leave);
             // 
             // label8
             // 
@@ -178,9 +187,9 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label8.Location = new System.Drawing.Point(343, 20);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 16);
+            this.label8.Size = new System.Drawing.Size(117, 16);
             this.label8.TabIndex = 5;
-            this.label8.Text = "Purchased date:";
+            this.label8.Text = "Purchased date";
             // 
             // label9
             // 
@@ -189,9 +198,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label9.Location = new System.Drawing.Point(382, 64);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 16);
+            this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 4;
-            this.label9.Text = "Price:";
+            this.label9.Text = "Price";
             // 
             // label10
             // 
@@ -200,9 +209,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label10.Location = new System.Drawing.Point(382, 104);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 16);
+            this.label10.Size = new System.Drawing.Size(64, 16);
             this.label10.TabIndex = 3;
-            this.label10.Text = "Quantity:";
+            this.label10.Text = "Quantity";
             // 
             // label7
             // 
@@ -211,9 +220,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label7.Location = new System.Drawing.Point(11, 98);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(119, 16);
+            this.label7.Size = new System.Drawing.Size(115, 16);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Publisher name:";
+            this.label7.Text = "Publisher name";
             // 
             // label6
             // 
@@ -222,9 +231,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label6.Location = new System.Drawing.Point(32, 64);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 16);
+            this.label6.Size = new System.Drawing.Size(94, 16);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Author name:";
+            this.label6.Text = "Author name";
             // 
             // label5
             // 
@@ -233,9 +242,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label5.Location = new System.Drawing.Point(40, 23);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.Size = new System.Drawing.Size(86, 16);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Book name:";
+            this.label5.Text = "Book name";
             // 
             // label4
             // 
@@ -370,6 +379,16 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(723, 449);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 16);
+            this.label12.TabIndex = 8;
+            // 
             // view_books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,5 +445,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

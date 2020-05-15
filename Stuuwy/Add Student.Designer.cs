@@ -89,7 +89,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(125, 16);
+            this.label7.Location = new System.Drawing.Point(27, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(0, 16);
             this.label7.TabIndex = 15;
@@ -123,6 +123,7 @@
             this.textBox5.Size = new System.Drawing.Size(159, 20);
             this.textBox5.TabIndex = 11;
             this.textBox5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // textBox4
             // 
@@ -131,6 +132,7 @@
             this.textBox4.Size = new System.Drawing.Size(159, 20);
             this.textBox4.TabIndex = 10;
             this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
             // textBox3
             // 
@@ -139,6 +141,7 @@
             this.textBox3.Size = new System.Drawing.Size(159, 20);
             this.textBox3.TabIndex = 9;
             this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // textBox2
             // 
@@ -147,6 +150,7 @@
             this.textBox2.Size = new System.Drawing.Size(159, 20);
             this.textBox2.TabIndex = 8;
             this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox1
             // 
@@ -155,6 +159,7 @@
             this.textBox1.Size = new System.Drawing.Size(159, 20);
             this.textBox1.TabIndex = 7;
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // label6
             // 
@@ -163,9 +168,9 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label6.Location = new System.Drawing.Point(27, 284);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 16);
+            this.label6.Size = new System.Drawing.Size(103, 16);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Student Email:";
+            this.label6.Text = "Student Email";
             // 
             // label5
             // 
@@ -174,9 +179,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label5.Location = new System.Drawing.Point(27, 240);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 16);
+            this.label5.Size = new System.Drawing.Size(130, 16);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Student Semestar:";
+            this.label5.Text = "Student Semestar";
             // 
             // label4
             // 
@@ -185,9 +190,9 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label4.Location = new System.Drawing.Point(27, 195);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 16);
+            this.label4.Size = new System.Drawing.Size(132, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Student Programa:";
+            this.label4.Text = "Student Programa";
             // 
             // label3
             // 
@@ -196,9 +201,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label3.Location = new System.Drawing.Point(27, 148);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 16);
+            this.label3.Size = new System.Drawing.Size(110, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Student Indeks:";
+            this.label3.Text = "Student Indeks";
             // 
             // label2
             // 
@@ -207,9 +212,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label2.Location = new System.Drawing.Point(27, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 16);
+            this.label2.Size = new System.Drawing.Size(131, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Student Lastname:";
+            this.label2.Text = "Student Lastname";
             // 
             // label1
             // 
@@ -218,9 +223,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
             this.label1.Location = new System.Drawing.Point(27, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 16);
+            this.label1.Size = new System.Drawing.Size(132, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Student Firstname:";
+            this.label1.Text = "Student Firstname";
             // 
             // pictureBox1
             // 
@@ -245,7 +250,6 @@
             this.Name = "add_Student_info";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Student Information";
-            this.Load += new System.EventHandler(this.add_Student_info_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

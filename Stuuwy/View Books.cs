@@ -8,10 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+
 namespace Stuuwy
 {
     public partial class view_books : Form
     {
+        bool bookNameValidation = false;
+        bool bookAuthorValidation = false;
+        bool bookPublisherNameValidation = false;
+        bool bookPriceValidation = false;
+        bool bookQuantityValidation = false;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True");
         public view_books()
         {
@@ -54,6 +61,30 @@ namespace Stuuwy
         {
             if (e.KeyValue == 13)
                 button1_Click(sender, e);
+        }
+        private void txt_BookName_Leave(object sender, EventArgs e)
+        {
+            bookNameValidation = ValidateString(txt_BookName, label5);
+        }
+
+        private void txt_AuthorName_Leave(object sender, EventArgs e)
+        {
+            bookAuthorValidation = ValidateString(txt_AuthorName, label6);
+        }
+
+        private void txt_PublisherName_Leave(object sender, EventArgs e)
+        {
+            bookPublisherNameValidation = ValidateString(txt_PublisherName, label7);
+        }
+
+        private void txt_Price_Leave(object sender, EventArgs e)
+        {
+            bookPriceValidation = ValidateInteger(txt_Price,label9);
+        }
+
+        private void txt_Quantity_Leave(object sender, EventArgs e)
+        {
+            bookQuantityValidation = ValidateString(txt_Quantity, label10);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -133,6 +164,7 @@ namespace Stuuwy
                 cmd.ExecuteNonQuery();
                 con.Close();
                 Display_Grid();
+                label12.Text = "";
                 MessageBox.Show("Record updated successfully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 panel4.Visible = false;
             }
@@ -159,6 +191,38 @@ namespace Stuuwy
             catch (Exception exp)
             {
                 MessageBox.Show(exp.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public bool ValidateInteger(TextBox textBox, Label label)
+        {
+            if (!Regex.Match(textBox.Text, "^[0-9]+$").Success)
+            {
+                label12.Text = "";
+                label12.Text = label.Text + " is invalid.";
+                MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+                textBox.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool ValidateString(TextBox textBox, Label label)
+        {
+            if (!Regex.Match(textBox.Text, "^[A-Z0-9]*[0-9a-zA-Z\\s]").Success)
+            {
+                label12.Text = "";
+                label12.Text = label.Text + " is invalid.";
+                MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+                textBox.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
