@@ -127,5 +127,11 @@ namespace Stuuwy
             View_Student_Information vs = new View_Student_Information();
             vs.Show();
         }
+
+        private void issueBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Issue_Books ib = new Issue_Books();
+            ib.Show();
+        }
     }
 }

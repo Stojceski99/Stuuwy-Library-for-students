@@ -15,12 +15,12 @@ namespace Stuuwy
 {
     public partial class View_Student_Information : Form
     {
-        bool firstNameValidation = false;
-        bool lastNameValidation = false;
-        bool indeksValidation = false;
-        bool programaValidation = false;
-        bool semestarValidation = false;
-        bool emailValidation = false;
+        bool firstNameValidation = true;
+        bool lastNameValidation = true;
+        bool indeksValidation = true;
+        bool programaValidation = true;
+        bool semestarValidation = true;
+        bool emailValidation = true;
 
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True");
         public View_Student_Information()
@@ -35,10 +35,9 @@ namespace Stuuwy
                 con.Close();
             }
             con.Open();
-
-            FillGrid();
+            FillGrid();      
         }
-        private void textBox1_KeyUp_1(object sender, KeyEventArgs e)
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
@@ -128,94 +127,73 @@ namespace Stuuwy
         {
             label1.Text = "Enter student's semestar";
         }
-        private void txt_StudentFirstname_Leave(object sender, EventArgs e)
+        private void studentFirst_Leave(object sender, EventArgs e)
         {
-            firstNameValidation = ValidateString(txt_StudentFirstname, label5);
+            firstNameValidation = ValidateString(studentFirst, label4);
         }
 
-        private void txt_StudentLastName_Leave(object sender, EventArgs e)
+        private void studentLast_Leave(object sender, EventArgs e)
         {
-            lastNameValidation = ValidateString(txt_StudentLastName, label6);
+            lastNameValidation = ValidateString(studentLast, label5);
         }
 
-        private void txt_StudentIndeks_Leave(object sender, EventArgs e)
+        private void studentIndeks_Leave(object sender, EventArgs e)
         {
-            indeksValidation = ValidateInteger(txt_StudentIndeks, label7);
+            indeksValidation = ValidateInteger(studentIndeks, label6);
         }
 
-        private void txt_StudentPrograma_Leave(object sender, EventArgs e)
+        private void studentPrograma_Leave(object sender, EventArgs e)
         {
-            programaValidation = ValidateString(txt_StudentPrograma, label8);
+            programaValidation = ValidateString(studentPrograma, label7);
         }
 
-        private void txt_StudentSemestar_Leave(object sender, EventArgs e)
+        private void studentSemestar_Leave(object sender, EventArgs e)
         {
-            semestarValidation = ValidateInteger(txt_StudentSemestar, label9);
+            semestarValidation = ValidateInteger(studentSemestar, label8);
         }
 
-        private void txt_StudentEmail_Leave(object sender, EventArgs e)
+        private void studentEmail_Leave(object sender, EventArgs e)
         {
-            emailValidation = ValidateEmail(txt_StudentEmail, label10);
+            emailValidation = ValidateEmail(studentEmail, label9);
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_Click(object sender, EventArgs e) // FOR OPTIMATIZATION, YOU CAN CHECK IN WHICH TEXTBOX TEXT HAS BEEN CHANGED(TEXT CHANGED EVENT), THEN YOU CAN UPDATE TEXT TO ONLY THOSE TEXTBOX'S, NOT ALL OF THEM!
         {
-            // prikazuvanje na vrednostite na polinjata vo textBoxovite.
-            int i;
-            i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-            String query = "SELECT * FROM Student_Information WHERE ID="+ i +"";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                txt_StudentFirstname.Text = dr["studentFirstName"].ToString();
-                txt_StudentLastName.Text = dr["studentLastName"].ToString();
-                txt_StudentIndeks.Text = dr["studentIndeks"].ToString();
-                txt_StudentPrograma.Text = dr["studentPrograma"].ToString();
-                txt_StudentSemestar.Text = dr["studentSemestar"].ToString();
-                txt_StudentEmail.Text = dr["studentEmail"].ToString();
-            }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int i;
-            i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + txt_StudentIndeks.Text + "' OR studentEmail='" + txt_StudentEmail.Text + "' EXCEPT " +
-                "", con);
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            
+            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + studentIndeks.Text + "' OR studentEmail='" + studentEmail.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            if (dt.Rows.Count >= 1)
+            if (dt.Rows.Count > 1)  // POSSIBLE BUG  !!!!!!!
             {
                 label3.Text = "Student Indeks or Student Email are already taken.";
                 MessageBox.Show("Student Indeks or Student Email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if (txt_StudentFirstname.Text == "" || txt_StudentLastName.Text == "" || txt_StudentIndeks.Text == "" || txt_StudentPrograma.Text == "" || txt_StudentSemestar.Text == "" || txt_StudentEmail.Text == ""   )
+            if (studentFirst.Text.Length == 0 || studentLast.Text.Length == 0 || studentIndeks.Text.Length == 0 || studentPrograma.Text.Length == 0 || studentSemestar.Text.Length == 0 || studentEmail.Text.Length == 0) // ako se prazni textBox-ovite
             {
-                label3.Text = "All field's are required.";
-                MessageBox.Show("All field's are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_StudentFirstname.Focus();
+                label7.Text = "All field's are required.";
+                MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (firstNameValidation && lastNameValidation && indeksValidation && programaValidation && semestarValidation && emailValidation )
+            if (firstNameValidation && lastNameValidation && indeksValidation && programaValidation && semestarValidation && emailValidation)
             {
                 try
                 {
+                    int i;
+                    i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
                     con.Open();
-                    String query = "UPDATE Student_Information SET studentFirstName ='" + txt_StudentFirstname.Text + "',studentLastName ='" + txt_StudentLastName.Text + "',studentIndeks ='" + txt_StudentIndeks.Text + "',studentPrograma ='" + txt_StudentPrograma.Text + "',studentSemestar ='" + txt_StudentSemestar.Text + "',studentEmail ='" + txt_StudentEmail.Text + "' WHERE ID=" + i + "";
+                    String query = "UPDATE Student_Information SET studentFirstName ='" + studentFirst.Text + "',studentLastName ='" + studentLast.Text + "',studentIndeks =" + studentIndeks.Text + ",studentPrograma ='" + studentPrograma.Text + "',studentSemestar =" + studentSemestar.Text + ",studentEmail ='" + studentEmail.Text + "' WHERE ID ="+ i +"";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     FillGrid();
+                    MessageBox.Show("Student information updated successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     con.Close();
                 }
-                catch(Exception exp)
+                catch (Exception exp)
                 {
                     MessageBox.Show("Error." + exp.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -223,6 +201,27 @@ namespace Stuuwy
                 label3.Text = "Something went wrong.";
                 MessageBox.Show("Something went wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i;
+            i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
+            String query = "SELECT * FROM Student_Information";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                studentFirst.Text = dr["studentFirstName"].ToString();
+                studentLast.Text = dr["studentLastName"].ToString();
+                studentIndeks.Text = dr["studentIndeks"].ToString();
+                studentPrograma.Text = dr["studentPrograma"].ToString();
+                studentSemestar.Text = dr["studentSemestar"].ToString();
+                studentEmail.Text = dr["studentEmail"].ToString();
+            }
+
         }
         //Metodi
 
@@ -258,9 +257,9 @@ namespace Stuuwy
         }
         public bool ValidateString(TextBox textBox, Label label)
         {
-            if (!Regex.Match(textBox.Text, "^[A-Z][a-zA-Z]*$").Success)
+            if (!Regex.Match(textBox.Text, "^[A-Z\\s][a-zA-Z\\s]+$").Success)
             {
-                label3.Text = label.Text + " is invalid.";
+                label3.Text = label.Text + " is invalid.";  
                 MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Focus();
                 textBox.Text = "";
@@ -273,6 +272,9 @@ namespace Stuuwy
         }
         public void FillGrid()
         {
+            dataGridView1.Columns.Clear();
+            dataGridView1.Refresh();
+
             String query = "SELECT * FROM Student_Information";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();

@@ -65,8 +65,6 @@ namespace Stuuwy
                 label7.Text = "Something went wrong.";
                 MessageBox.Show("Something went wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
         private void textBox1_Leave(object sender, EventArgs e) // validacija na Firstname
         {
