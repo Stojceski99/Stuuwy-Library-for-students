@@ -87,7 +87,7 @@ namespace Stuuwy
             }
             if (dt.Rows.Count == 0 && bookNameValidation && bookAuthorValidation && bookPublisherNameValidation && bookPrice && bookQuantity)
             {
-                String query = "INSERT INTO Book_Information VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + dateTimePicker1.Value + "'," + textBox5.Text + "," + textBox6.Text + ")";
+                String query = "INSERT INTO Book_Information VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + dateTimePicker1.Value.ToString() + "'," + textBox5.Text + "," + textBox6.Text + ","+ textBox6.Text +")";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Book was added successufully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

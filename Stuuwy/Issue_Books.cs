@@ -60,11 +60,11 @@ namespace Stuuwy
         private void txt_bookName_KeyUp(object sender, KeyEventArgs e)
         {
             int count = 0;
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode != Keys.Enter)
             {
                 listBox1.Items.Clear();
 
-                String query = "SELECT * FROM Book_Information WHERE bookName LIKE ('%"+ txt_Indeks.Text +"%')";
+                String query = "SELECT * FROM Book_Information WHERE bookName LIKE ('%"+ txt_bookName.Text +"%')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
@@ -86,7 +86,7 @@ namespace Stuuwy
             if (e.KeyCode == Keys.Down)
             {
                 listBox1.Focus();
-                listBox1.SelectedIndex = 0;
+                //listBox1.SelectedIndex = 0;
             }
         }
 
@@ -94,24 +94,50 @@ namespace Stuuwy
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txt_bookName.Text = listBox1.SelectedIndex.ToString();
+                txt_bookName.Text = listBox1.SelectedItem.ToString();
                 listBox1.Visible = false;
             }
         }
 
         private void listBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            txt_bookName.Text = listBox1.SelectedIndex.ToString();
+            txt_bookName.Text = listBox1.SelectedItem.ToString();
             listBox1.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String query = "INSERT INTO Book_Issue VALUES(" + txt_Indeks.Text + ",'" + txt_first.Text + "','" + txt_last.Text + "','" + txt_programa.Text + "'," + txt_semestar.Text + ",'" + txt_email.Text + "','" + txt_bookName.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "')";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
+            int checkBookQuantity = 0;
+            String queryCheck = "SELECT * FROM Book_Information WHERE bookName='"+ txt_bookName.Text +"'";
+            SqlCommand cmdCheck = new SqlCommand(queryCheck, con);
+            cmdCheck.ExecuteNonQuery();
+            DataTable dtCheck = new DataTable();
+            SqlDataAdapter daCheck = new SqlDataAdapter(cmdCheck);
+            daCheck.Fill(dtCheck);
+            foreach (DataRow drCheck in dtCheck.Rows)
+            {
+                checkBookQuantity = Convert.ToInt32(drCheck["availableQuantity"].ToString());
+            }
 
-            MessageBox.Show("Book issued.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (checkBookQuantity > 0)
+            {
+                // Query for inserting information about issued book in database
+                String query = "INSERT INTO Book_Issue VALUES(" + txt_Indeks.Text + ",'" + txt_first.Text + "','" + txt_last.Text + "','" + txt_programa.Text + "'," + txt_semestar.Text + ",'" + txt_email.Text + "','" + txt_bookName.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "')";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+
+                // Query for updating availableQuantity
+                String queryUpdate = "UPDATE Book_Information SET availableQuantity = availableQuantity-1 WHERE bookName ='" + txt_bookName.Text + "' ";
+                SqlCommand cmdUpdate = new SqlCommand(queryUpdate, con);
+                cmdUpdate.ExecuteNonQuery();
+
+                MessageBox.Show("Book issued.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                txt_bookName.Focus();
+                MessageBox.Show("Book not available.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         //Metodi
 
