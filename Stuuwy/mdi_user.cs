@@ -133,5 +133,11 @@ namespace Stuuwy
             Issue_Books ib = new Issue_Books();
             ib.Show();
         }
+
+        private void returnBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Return_Book rb = new Return_Book();
+            rb.Show();
+        }
     }
 }

@@ -84,6 +84,12 @@
     <Compile Include="Register Form.Designer.cs">
       <DependentUpon>Register Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Return Book.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Return Book.Designer.cs">
+      <DependentUpon>Return Book.cs</DependentUpon>
+    </Compile>
     <Compile Include="View Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="Register Form.resx">
       <DependentUpon>Register Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Return Book.resx">
+      <DependentUpon>Return Book.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View Books.resx">
       <DependentUpon>View Books.cs</DependentUpon>

@@ -122,7 +122,7 @@ namespace Stuuwy
             if (checkBookQuantity > 0)
             {
                 // Query for inserting information about issued book in database
-                String query = "INSERT INTO Book_Issue VALUES(" + txt_Indeks.Text + ",'" + txt_first.Text + "','" + txt_last.Text + "','" + txt_programa.Text + "'," + txt_semestar.Text + ",'" + txt_email.Text + "','" + txt_bookName.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "')";
+                String query = "INSERT INTO Book_Issue VALUES(" + txt_Indeks.Text + ",'" + txt_first.Text + "','" + txt_last.Text + "','" + txt_programa.Text + "'," + txt_semestar.Text + ",'" + txt_email.Text + "','" + txt_bookName.Text + "','" + dateTimePicker1.Value.ToShortDateString() + "','')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
 
@@ -135,7 +135,7 @@ namespace Stuuwy
             }
             else
             {
-                txt_bookName.Focus();
+                txt_bookName.Focus();   
                 MessageBox.Show("Book not available.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
