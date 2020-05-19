@@ -145,5 +145,11 @@ namespace Stuuwy
             Book_Record br = new Book_Record();
             br.Show();
         }
+
+        private void bookReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Report_for_Books rfb = new Report_for_Books();
+            rfb.Show();
+        }
     }
 }
