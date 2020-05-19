@@ -108,12 +108,14 @@ namespace Stuuwy
         private void button2_Click(object sender, EventArgs e)
         {
             int checkBookQuantity = 0;
-            String queryCheck = "SELECT * FROM Book_Information WHERE bookName='"+ txt_bookName.Text +"'";
+            checkBookQuantity = 0;
+            String queryCheck = "SELECT * FROM Book_Information WHERE bookName='" + txt_bookName.Text + "'";
             SqlCommand cmdCheck = new SqlCommand(queryCheck, con);
             cmdCheck.ExecuteNonQuery();
             DataTable dtCheck = new DataTable();
             SqlDataAdapter daCheck = new SqlDataAdapter(cmdCheck);
             daCheck.Fill(dtCheck);
+
             foreach (DataRow drCheck in dtCheck.Rows)
             {
                 checkBookQuantity = Convert.ToInt32(drCheck["availableQuantity"].ToString());
@@ -131,11 +133,11 @@ namespace Stuuwy
                 SqlCommand cmdUpdate = new SqlCommand(queryUpdate, con);
                 cmdUpdate.ExecuteNonQuery();
 
-                MessageBox.Show("Book issued.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Book issued successfully.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                txt_bookName.Focus();   
+                txt_bookName.Focus();
                 MessageBox.Show("Book not available.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -149,6 +151,21 @@ namespace Stuuwy
             txt_programa.Text = "";
             txt_semestar.Text = "";
             txt_email.Text = "";
+        }
+        private int CheckAvailability (int checkBookQuantity)
+        {
+            checkBookQuantity = 0;
+            String queryCheck = "SELECT * FROM Book_Information WHERE bookName='" + txt_bookName.Text + "'";
+            SqlCommand cmdCheck = new SqlCommand(queryCheck, con);
+            cmdCheck.ExecuteNonQuery();
+            DataTable dtCheck = new DataTable();
+            SqlDataAdapter daCheck = new SqlDataAdapter(cmdCheck);
+            daCheck.Fill(dtCheck);
+            foreach (DataRow drCheck in dtCheck.Rows)
+            {
+                checkBookQuantity = Convert.ToInt32(drCheck["availableQuantity"].ToString());
+            }
+            return checkBookQuantity;
         }
     }
 }

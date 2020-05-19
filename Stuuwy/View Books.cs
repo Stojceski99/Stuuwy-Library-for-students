@@ -44,7 +44,10 @@ namespace Stuuwy
                 da.Fill(dt);
                 i = Convert.ToInt32(dt.Rows.Count.ToString());
                 if (i == 0)
+                {
                     MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 textBox1.Text = "";
                 dataGridView1.DataSource = dt; 
                 con.Close();

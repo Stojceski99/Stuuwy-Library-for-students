@@ -33,29 +33,12 @@ namespace Stuuwy
             }
             con.Open();
         }
-
-        //Metodi
-
-        private void FillGrid(string indeks)
-        {
-            dataGridView1.Columns.Clear();
-            dataGridView1.Refresh();
-
-            String query = "SELECT * FROM Book_Issue WHERE studentIndeks='"+ indeks.ToString() +"' AND bookReturnDate=''";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-        }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             panel4.Visible = true;
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
 
-            String query = "SELECT * FROM Book_Issue WHERE ID ="+ i +"";
+            String query = "SELECT * FROM Book_Issue WHERE ID =" + i + "";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
@@ -72,7 +55,7 @@ namespace Stuuwy
         private void button2_Click(object sender, EventArgs e)
         {
             int i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
-            String query = "UPDATE Book_Issue SET bookReturnDate='"+ dateTimePicker1.Value.ToString()+"' WHERE ID="+ i +"";
+            String query = "UPDATE Book_Issue SET bookReturnDate='" + dateTimePicker1.Value.ToString() + "' WHERE ID=" + i + "";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
 
@@ -85,6 +68,22 @@ namespace Stuuwy
             panel3.Visible = true;
 
             FillGrid(textBox1.Text);
+        }
+
+        //Metodi
+
+        private void FillGrid(string indeks)
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.Refresh();
+
+            String query = "SELECT * FROM Book_Issue WHERE studentIndeks='"+ indeks.ToString() +"' AND bookReturnDate=''";
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
     }
 }
