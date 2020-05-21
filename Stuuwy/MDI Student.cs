@@ -24,7 +24,7 @@ namespace Stuuwy
             leftBoarderBtn = new Panel();
             leftBoarderBtn.Size = new Size(7, 60);
             panelMenu.Controls.Add(leftBoarderBtn);
-            //Form > buttons
+            //Form > control buttons
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
@@ -254,6 +254,9 @@ namespace Stuuwy
         private void BtnLogout_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
+            loginForm lf = new loginForm();
+            lf.Show();
+            this.Close();
         }
 
         private void BtnHome_Click(object sender, EventArgs e)

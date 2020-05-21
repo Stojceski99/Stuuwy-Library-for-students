@@ -86,11 +86,11 @@ namespace Stuuwy
             } 
             else // nepredviden slucaj
             {
-                label1.Text = "Something went wrong.";
-                MessageBox.Show("Something went wrong,please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+                label1.Text = "Try again.";
+                MessageBox.Show("Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
             
-        }
+        } 
         //Metodi
         private void ClearTextBox() // metod za brisenje na podatocite vo textBox-ovite
         {
