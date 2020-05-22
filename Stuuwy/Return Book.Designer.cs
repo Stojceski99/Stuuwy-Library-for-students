@@ -61,7 +61,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1339, 413);
+            this.panel1.Size = new System.Drawing.Size(1038, 386);
             this.panel1.TabIndex = 0;
             // 
             // panel4
@@ -199,9 +199,9 @@
             // 
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 240);
+            this.panel2.Location = new System.Drawing.Point(0, 213);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1339, 173);
+            this.panel2.Size = new System.Drawing.Size(1038, 173);
             this.panel2.TabIndex = 1;
             this.panel2.Visible = false;
             // 
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1339, 413);
+            this.ClientSize = new System.Drawing.Size(1038, 386);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

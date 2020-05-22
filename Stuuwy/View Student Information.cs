@@ -183,7 +183,7 @@ namespace Stuuwy
                     int i;
                     i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
                     con.Open();
-                    String query = "UPDATE Student_Information SET studentFirstName ='" + studentFirst.Text + "',studentLastName ='" + studentLast.Text + "',studentIndeks =" + studentIndeks.Text + ",studentPrograma ='" + studentPrograma.Text + "',studentSemestar =" + studentSemestar.Text + ",studentEmail ='" + studentEmail.Text + "' WHERE ID ="+ i +"";
+                    String query = "UPDATE Student_Information SET studentFirstName ='" + studentFirst.Text + "',studentLastName ='" + studentLast.Text + "',studentIndeks =" + studentIndeks.Text + ",studentPrograma ='" + studentPrograma.Text + "',studentSemestar =" + studentSemestar.Text + ",studentEmail ='" + studentEmail.Text + "',studentPassword='"+ studentPassword.Text +"' WHERE ID ="+ i +"";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     FillGrid();
@@ -204,6 +204,10 @@ namespace Stuuwy
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            con.Open();
+            panel2.Visible = true;
             int i;
             i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
             String query = "SELECT * FROM Student_Information";
@@ -220,6 +224,7 @@ namespace Stuuwy
                 studentPrograma.Text = dr["studentPrograma"].ToString();
                 studentSemestar.Text = dr["studentSemestar"].ToString();
                 studentEmail.Text = dr["studentEmail"].ToString();
+                studentPassword.Text = dr["studentPassword"].ToString();
             }
 
         }

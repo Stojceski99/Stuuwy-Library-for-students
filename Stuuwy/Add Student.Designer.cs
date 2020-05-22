@@ -33,55 +33,56 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.studentEmail = new System.Windows.Forms.TextBox();
+            this.studentSemestar = new System.Windows.Forms.TextBox();
+            this.studentPrograma = new System.Windows.Forms.TextBox();
+            this.studentIndeks = new System.Windows.Forms.TextBox();
+            this.studentLast = new System.Windows.Forms.TextBox();
+            this.studentFirst = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.studentPassword = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 541);
+            this.panel1.Size = new System.Drawing.Size(405, 489);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.studentPassword);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.studentEmail);
+            this.panel2.Controls.Add(this.studentSemestar);
+            this.panel2.Controls.Add(this.studentPrograma);
+            this.panel2.Controls.Add(this.studentIndeks);
+            this.panel2.Controls.Add(this.studentLast);
+            this.panel2.Controls.Add(this.studentFirst);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(12, 145);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(381, 389);
+            this.panel2.Size = new System.Drawing.Size(381, 465);
             this.panel2.TabIndex = 1;
             // 
             // label7
@@ -99,7 +100,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.button1.Location = new System.Drawing.Point(110, 336);
+            this.button1.Location = new System.Drawing.Point(112, 406);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 32);
             this.button1.TabIndex = 14;
@@ -107,66 +108,66 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox6
+            // studentEmail
             // 
-            this.textBox6.Location = new System.Drawing.Point(191, 280);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(159, 20);
-            this.textBox6.TabIndex = 12;
-            this.textBox6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox6.Leave += new System.EventHandler(this.textBox6_Leave);
+            this.studentEmail.Location = new System.Drawing.Point(191, 329);
+            this.studentEmail.Name = "studentEmail";
+            this.studentEmail.Size = new System.Drawing.Size(159, 20);
+            this.studentEmail.TabIndex = 12;
+            this.studentEmail.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentEmail.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
-            // textBox5
+            // studentSemestar
             // 
-            this.textBox5.Location = new System.Drawing.Point(191, 236);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 20);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
+            this.studentSemestar.Location = new System.Drawing.Point(191, 236);
+            this.studentSemestar.Name = "studentSemestar";
+            this.studentSemestar.Size = new System.Drawing.Size(159, 20);
+            this.studentSemestar.TabIndex = 11;
+            this.studentSemestar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentSemestar.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
-            // textBox4
+            // studentPrograma
             // 
-            this.textBox4.Location = new System.Drawing.Point(191, 191);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(159, 20);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
+            this.studentPrograma.Location = new System.Drawing.Point(191, 191);
+            this.studentPrograma.Name = "studentPrograma";
+            this.studentPrograma.Size = new System.Drawing.Size(159, 20);
+            this.studentPrograma.TabIndex = 10;
+            this.studentPrograma.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentPrograma.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
-            // textBox3
+            // studentIndeks
             // 
-            this.textBox3.Location = new System.Drawing.Point(191, 144);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(159, 20);
-            this.textBox3.TabIndex = 9;
-            this.textBox3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
+            this.studentIndeks.Location = new System.Drawing.Point(191, 144);
+            this.studentIndeks.Name = "studentIndeks";
+            this.studentIndeks.Size = new System.Drawing.Size(159, 20);
+            this.studentIndeks.TabIndex = 9;
+            this.studentIndeks.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentIndeks.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
-            // textBox2
+            // studentLast
             // 
-            this.textBox2.Location = new System.Drawing.Point(191, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
+            this.studentLast.Location = new System.Drawing.Point(191, 100);
+            this.studentLast.Name = "studentLast";
+            this.studentLast.Size = new System.Drawing.Size(159, 20);
+            this.studentLast.TabIndex = 8;
+            this.studentLast.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentLast.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
-            // textBox1
+            // studentFirst
             // 
-            this.textBox1.Location = new System.Drawing.Point(191, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
-            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.studentFirst.Location = new System.Drawing.Point(191, 57);
+            this.studentFirst.Name = "studentFirst";
+            this.studentFirst.Size = new System.Drawing.Size(159, 20);
+            this.studentFirst.TabIndex = 7;
+            this.studentFirst.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.studentFirst.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label6.Location = new System.Drawing.Point(27, 284);
+            this.label6.Location = new System.Drawing.Point(27, 333);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 16);
             this.label6.TabIndex = 5;
@@ -227,22 +228,30 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Student Firstname";
             // 
-            // pictureBox1
+            // studentPassword
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(405, 125);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.studentPassword.Location = new System.Drawing.Point(191, 285);
+            this.studentPassword.Name = "studentPassword";
+            this.studentPassword.PasswordChar = '*';
+            this.studentPassword.Size = new System.Drawing.Size(159, 20);
+            this.studentPassword.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
+            this.label8.Location = new System.Drawing.Point(27, 289);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(132, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Student Password";
             // 
             // add_Student_info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 541);
+            this.ClientSize = new System.Drawing.Size(405, 489);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -253,7 +262,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,14 +276,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox studentEmail;
+        private System.Windows.Forms.TextBox studentSemestar;
+        private System.Windows.Forms.TextBox studentPrograma;
+        private System.Windows.Forms.TextBox studentIndeks;
+        private System.Windows.Forms.TextBox studentLast;
+        private System.Windows.Forms.TextBox studentFirst;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox studentPassword;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -14,35 +14,40 @@ namespace Stuuwy
     public partial class loginForm : Form
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True"); // konekciski string so data bazata
-        int count = 0;
+        int countLibrarian = 0;
+        int countStudent = 0;
         public loginForm()
         {
             InitializeComponent();
+            // Form control buttons
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM Librarian WHERE userName COLLATE Latin1_general_CS_AS ='" + textBox1.Text + "' AND password COLLATE Latin1_general_CS_AS ='" + textBox2.Text + "'";
-            cmd.ExecuteNonQuery(); // metod koj se koristi za manipuliranje podatoci vo databaza i se koristi vo naredbi bez rezultat kako CREATE,INSERT,UPDATE,DELETE,SELECT ...
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            count = Convert.ToInt32(dt.Rows.Count.ToString());
-
+            countLibrarian = CheckLibrarian();
+            countStudent = CheckStudent();
             // IF CASSES FOR LOGIN
             if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0) // ako texBox1 i textBox2 se prazni
             {
                 label3.Text = "All field's are required.";
                 MessageBox.Show("Enter username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
-            else if (count == 0) // ako metodot ExecuteNonQuery() vrati rezultat 0 [nema kolona so takva kombinacija na "username" i "password"]
+            else if (countLibrarian == 0 && countStudent == 0) // ako metodot ExecuteNonQuery() vrati rezultat 0 [nema kolona so takva kombinacija na "username" i "password"]
             {
                 label3.Text = "Credentials don't match.";
                 MessageBox.Show("Credentials don't match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
-            else if (count >= 1) // ako ima >=1 t.e ako postoi taa kombinacija na "username" i "password"
+            else if (countLibrarian >= 1) // ako ima >=1 t.e ako postoi taa kombinacija na "username" i "password"
+            {
+                this.Hide();
+                MDI_Librarian ml = new MDI_Librarian();
+                ml.Show();
+            }
+            else if (countStudent >= 1)
             {
                 this.Hide();
                 mdi_user mu = new mdi_user();
@@ -50,8 +55,8 @@ namespace Stuuwy
             }
             else // nepredviden slucaj 
             {
-                label3.Text = "Bad credentials.";
-                MessageBox.Show("Bad credentials.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+                label3.Text = "Try again.";
+                MessageBox.Show("Try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
             }
                 
         }
@@ -76,6 +81,52 @@ namespace Stuuwy
         {
             if (e.KeyValue == 13)
                 button1_Click(sender, e);
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private int CheckLibrarian()
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+            int i = 0;
+            SqlCommand cmdLibrarian = con.CreateCommand();
+            cmdLibrarian.CommandType = CommandType.Text;
+            cmdLibrarian.CommandText = "SELECT * FROM Librarian WHERE email COLLATE Latin1_general_CS_AS ='" + textBox1.Text + "' AND password COLLATE Latin1_general_CS_AS ='" + textBox2.Text + "'";
+            cmdLibrarian.ExecuteNonQuery(); // metod koj se koristi za manipuliranje podatoci vo databaza i se koristi vo naredbi bez rezultat kako CREATE,INSERT,UPDATE,DELETE,SELECT ...
+            DataTable dtLibrarian = new DataTable();
+            SqlDataAdapter daLibrarian = new SqlDataAdapter(cmdLibrarian);
+            daLibrarian.Fill(dtLibrarian);
+            i = Convert.ToInt32(dtLibrarian.Rows.Count.ToString());
+            return i;
+        }
+        private int CheckStudent()
+        {
+            if (con.State == ConnectionState.Open)
+            {
+                con.Close();
+            }
+            con.Open();
+            int x = 0;
+            SqlCommand cmdStudent = con.CreateCommand();
+            cmdStudent.CommandType = CommandType.Text;
+            cmdStudent.CommandText = "SELECT * FROM Student_Information WHERE studentEmail COLLATE Latin1_general_CS_AS ='" + textBox1.Text + "' AND studentPassword COLLATE Latin1_general_CS_AS ='" + textBox2.Text + "'";
+            cmdStudent.ExecuteNonQuery(); // metod koj se koristi za manipuliranje podatoci vo databaza i se koristi vo naredbi bez rezultat kako CREATE,INSERT,UPDATE,DELETE,SELECT ...
+            DataTable dtStudent = new DataTable();
+            SqlDataAdapter daStudent = new SqlDataAdapter(cmdStudent);
+            daStudent.Fill(dtStudent);
+            x = Convert.ToInt32(dtStudent.Rows.Count.ToString());
+            return x;
         }
     }
 }

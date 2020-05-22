@@ -1,24 +1,24 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices; // library for using native library's of the operating system
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
 
 namespace Stuuwy
 {
-    public partial class mdi_user : Form
+    public partial class MDI_Librarian : Form
     {
         private int childFormNumber = 0;
         private IconButton currentBtn;
         private Panel leftBoarderBtn;
         private Form CurrentChildForm;
-        public mdi_user()
+        public MDI_Librarian()
         {
             InitializeComponent();
             leftBoarderBtn = new Panel();
@@ -39,6 +39,7 @@ namespace Stuuwy
             public static Color color4 = Color.FromArgb(95, 77, 221);
             public static Color color5 = Color.FromArgb(249, 88, 155);
             public static Color color6 = Color.FromArgb(24, 161, 251);
+            public static Color color7 = Color.FromArgb(102, 34, 204);
         }
 
         //Metodi
@@ -68,7 +69,7 @@ namespace Stuuwy
             }
         }
 
-        private void DisableButton()  
+        private void DisableButton()
         {
             if (currentBtn != null)
             {
@@ -91,7 +92,7 @@ namespace Stuuwy
         }
         private void OpenChildForm(Form childForm)
         {
-            if(CurrentChildForm != null)
+            if (CurrentChildForm != null)
             {
                 CurrentChildForm.Close();
             }
@@ -113,47 +114,48 @@ namespace Stuuwy
             childForm.Text = "Window " + childFormNumber++;
             childForm.Show();
         }
-
-        private void OpenFile(object sender, EventArgs e)
+        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            foreach (Form childForm in MdiChildren)
             {
-                string FileName = openFileDialog.FileName;
+                childForm.Close();
             }
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        private void BtnViewBook_Click(object sender, EventArgs e)
+        private void BtnAddNewBook_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new view_books());
+            OpenChildForm(new add_books());
         }
 
-        private void BtnReturnBook_Click(object sender, EventArgs e)
+        private void BtnIssueBook_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
-            OpenChildForm(new Return_Book());
+            OpenChildForm(new Issue_Books());
         }
 
-        private void BtnLogout_Click(object sender, EventArgs e)
+        private void BtnBookRecord_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            loginForm lf = new loginForm();
-            lf.Show();
-            this.Hide();
+            OpenChildForm(new Book_Record());
+        }
+
+        private void BtnBookReport_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new Report_for_Books());
+        }
+
+        private void BtnAddStudent_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color5);
+            OpenChildForm(new add_Student_info());
+        }
+
+        private void BtnViewStudentInfo_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color6);
+            OpenChildForm(new View_Student_Information());
         }
 
         private void BtnHome_Click(object sender, EventArgs e)
@@ -177,9 +179,9 @@ namespace Stuuwy
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void iconButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            WindowState = FormWindowState.Minimized;
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -192,9 +194,17 @@ namespace Stuuwy
                 WindowState = FormWindowState.Normal;
         }
 
-        private void iconButton3_Click(object sender, EventArgs e)
+        private void iconButton1_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            Application.Exit();
+        }
+
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color3);
+            loginForm lf = new loginForm();
+            lf.Show();
+            this.Hide();
         }
     }
 }

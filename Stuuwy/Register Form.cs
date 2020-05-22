@@ -15,9 +15,18 @@ namespace Stuuwy
     {
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True");
         bool emailValidation = false;
+        bool firstValidation = false;
+        bool lastValidation = false;
+        bool indeksValidation = false;
+        bool programaValidation = false;
+        bool semestarValidation = false;
         public Register_Form()
         {
             InitializeComponent();
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void Register_Form_Load(object sender, EventArgs e) // pri vcituvanje na formata Register_Form
@@ -28,22 +37,45 @@ namespace Stuuwy
             }
             con.Open(); //..vo sprotivno otvorija
         }
+        private void studentFirst_Leave(object sender, EventArgs e)
+        {
+            firstValidation = ValidateString(studentFirst, label2);
+        }
+
+        private void studentLast_Leave(object sender, EventArgs e)
+        {
+            lastValidation = ValidateString(studentLast, label3);
+        }
+        private void studentIndeks_Leave(object sender, EventArgs e)
+        {
+            indeksValidation = ValidateInteger(studentIndeks, label4);
+        }
+
+        private void studentPrograma_Leave(object sender, EventArgs e)
+        {
+            programaValidation = ValidateString(studentPrograma, label8);
+        }
+
+        private void studentSemestar_Leave(object sender, EventArgs e)
+        {
+            semestarValidation = ValidateInteger(studentSemestar, label9);
+        }
         private void textBox6_Leave(object sender, EventArgs e) // validacija na mail pri gubenje na focus od textBox6
         {
-            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$"; // tocna sema na Email - Thank you Youtube.
-            if (Regex.IsMatch(textBox6.Text, pattern))
+            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$"; // tocna sema na Email
+            if (Regex.IsMatch(studentEmail.Text, pattern))
                 emailValidation = true;
             else
             {
                 label1.Text = "Email was incorect.";
                 MessageBox.Show("Enter valid mail.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
-                textBox6.Text = "";
+                studentEmail.Text = "";
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
             //Proverka na userName i email pri registracija - ako se zafateni obidise so drugo userName ili drug email
-            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName COLLATE Latin1_general_CS_AS ='" + textBox3.Text + "' OR email COLLATE Latin1_general_CS_AS ='" + textBox6.Text + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName COLLATE Latin1_general_CS_AS ='" + studentIndeks.Text + "' OR email COLLATE Latin1_general_CS_AS ='" + studentEmail.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1) // Ako postoi barem 1 kolona so takvi userName OR email
@@ -52,26 +84,28 @@ namespace Stuuwy
                 MessageBox.Show("Username or email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
                 return;
             }
-            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
+            if (studentFirst.Text.Length == 0 || studentLast.Text.Length == 0 || studentIndeks.Text.Length == 0 || studentPrograma.Text.Length == 0 || studentPrograma.Text.Length == 0 ||studentPass.Text.Length == 0 || studentConPass.Text.Length == 0 || studentEmail.Text.Length == 0) // ako se prazni textBox-ovite
             {
                 label1.Text = "All field's are required.";
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
                 return;
             }
-            if (textBox5.Text != textBox4.Text) // ako ne se ednakvi stringovite 
+            if (studentConPass.Text != studentPass.Text) // ako ne se ednakvi stringovite 
             {
-                textBox4.Text = "";
-                textBox5.Text = "";
-                textBox4.Focus();
+                studentPass.Text = "";
+                studentConPass.Text = "";
+                studentPass.Focus();
                 label1.Text = "Password don't match.";
                 MessageBox.Show("Password don't match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
                 return;
             }
-            if (emailValidation)
+            if (emailValidation && firstValidation && lastValidation && indeksValidation && programaValidation && semestarValidation)
             {
                 try
                 {
-                    String query = "INSERT INTO Registered_Users (firstName,lastName,userName,password,email) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox6.Text + "')";
+                    String query = "INSERT INTO Student_Information (studentFirstName,studentLastName,studentIndeks,studentPrograma,studentSemestar,studentEmail,studentPassword) VALUES ('" + studentFirst.Text + "','" + studentLast.Text + "'," +
+                        "" + studentIndeks.Text + ",'" + studentPrograma.Text + "','"+ studentSemestar.Text +"','" + studentEmail.Text + "'," +
+                        "'" + studentPass.Text + "')";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("You were registered successufully.","Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,12 +128,12 @@ namespace Stuuwy
         //Metodi
         private void ClearTextBox() // metod za brisenje na podatocite vo textBox-ovite
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
+            studentFirst.Text = "";
+            studentLast.Text = "";
+            studentIndeks.Text = "";
+            studentPass.Text = "";
+            studentConPass.Text = "";
+            studentEmail.Text = "";
         }
         private void Show_loginForm() // loadiranje na loginForm
         {
@@ -112,6 +146,46 @@ namespace Stuuwy
         {
             if (e.KeyValue == 13)
                 button1_Click(sender, e);
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        public bool ValidateString(TextBox textBox, Label label)
+        {
+            if (!Regex.Match(textBox.Text, "^[A-Z\\s][a-zA-Z\\s]+$").Success)
+            {
+                label1.Text = label.Text + " is invalid.";
+                MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+                textBox.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool ValidateInteger(TextBox textBox, Label label)
+        {
+            if (!Regex.Match(textBox.Text, "^[0-9]+$").Success)
+            {
+                label3.Text = label.Text + " is invalid.";
+                MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+                textBox.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

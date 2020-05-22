@@ -27,7 +27,7 @@ namespace Stuuwy
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + textBox3.Text + "' OR studentEmail='" + textBox6.Text + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + studentIndeks.Text + "' OR studentEmail='" + studentEmail.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1)
@@ -36,7 +36,7 @@ namespace Stuuwy
                 MessageBox.Show("Student Indeks or Student Email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0 || textBox3.Text.Length == 0 || textBox4.Text.Length == 0 || textBox5.Text.Length == 0 || textBox6.Text.Length == 0) // ako se prazni textBox-ovite
+            if (studentFirst.Text.Length == 0 || studentLast.Text.Length == 0 || studentIndeks.Text.Length == 0 || studentPrograma.Text.Length == 0 || studentSemestar.Text.Length == 0 || studentEmail.Text.Length == 0) // ako se prazni textBox-ovite
             {
                 label7.Text = "All field's are required.";
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -47,11 +47,12 @@ namespace Stuuwy
                 try
                 {
                     con.Open();
-                    String query = "INSERT INTO Student_Information VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "'," + textBox5.Text + ",'" + textBox6.Text + "')";
+                    String query = "INSERT INTO Student_Information VALUES ('" + studentFirst.Text + "','" + studentLast.Text + "','" + studentIndeks.Text + "','" + studentPrograma.Text + "'," + studentSemestar.Text + ",'" + studentEmail.Text + "','"+ studentPassword.Text+"')";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     ClearTextBox();
                     MessageBox.Show("Student added successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    label7.Text = "";
                     con.Close();
                 }
                 catch (Exception exp)
@@ -68,27 +69,27 @@ namespace Stuuwy
         }
         private void textBox1_Leave(object sender, EventArgs e) // validacija na Firstname
         {
-            firstNameValidation = ValidateString(textBox1, label1);
+            firstNameValidation = ValidateString(studentFirst, label1);
         }
         private void textBox2_Leave(object sender, EventArgs e) // validacija na Lastname
         {
-            lastNameValidation = ValidateString(textBox2, label2);
+            lastNameValidation = ValidateString(studentLast, label2);
         }
         private void textBox3_Leave(object sender, EventArgs e) // validacija na Indeks
         {
-            indeksValidation = ValidateInteger(textBox3, label3);
+            indeksValidation = ValidateInteger(studentIndeks, label3);
         }
         private void textBox4_Leave(object sender, EventArgs e) // validacija na Programa
         {
-            programaValidation = ValidateString(textBox4, label4);
+            programaValidation = ValidateString(studentPrograma, label4);
         }
         private void textBox5_Leave(object sender, EventArgs e) // validacija na Semestar
         {
-            semestarValidation = ValidateInteger(textBox5, label5);
+            semestarValidation = ValidateInteger(studentSemestar, label5);
         }
         private void textBox6_Leave(object sender, EventArgs e) // validacija na Email
         {
-            emailValidation = ValidateEmail(textBox6, label6);
+            emailValidation = ValidateEmail(studentEmail, label6);
         }
         // Metodi
 
@@ -139,12 +140,12 @@ namespace Stuuwy
         }
         private void ClearTextBox() 
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
+            studentFirst.Text = "";
+            studentLast.Text = "";
+            studentIndeks.Text = "";
+            studentPrograma.Text = "";
+            studentSemestar.Text = "";
+            studentEmail.Text = "";
         }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)

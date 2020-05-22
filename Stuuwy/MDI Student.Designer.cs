@@ -30,17 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdi_user));
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.bookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.issueBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.returnBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewStudentInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
             this.BtnLogout = new FontAwesome.Sharp.IconButton();
@@ -57,102 +46,12 @@
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.panelShadow = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.menuStrip.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnHome)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookToolStripMenuItem,
-            this.studentToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1290, 24);
-            this.menuStrip.TabIndex = 0;
-            this.menuStrip.Text = "MenuStrip";
-            // 
-            // bookToolStripMenuItem
-            // 
-            this.bookToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewBookToolStripMenuItem,
-            this.viewBooksToolStripMenuItem,
-            this.issueBookToolStripMenuItem,
-            this.returnBookToolStripMenuItem,
-            this.bookRecordToolStripMenuItem,
-            this.bookReportToolStripMenuItem});
-            this.bookToolStripMenuItem.Name = "bookToolStripMenuItem";
-            this.bookToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.bookToolStripMenuItem.Text = "Book";
-            // 
-            // addNewBookToolStripMenuItem
-            // 
-            this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
-            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.addNewBookToolStripMenuItem.Text = "Add New Book";
-            this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
-            // 
-            // viewBooksToolStripMenuItem
-            // 
-            this.viewBooksToolStripMenuItem.Name = "viewBooksToolStripMenuItem";
-            this.viewBooksToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.viewBooksToolStripMenuItem.Text = "View Books";
-            this.viewBooksToolStripMenuItem.Click += new System.EventHandler(this.viewBooksToolStripMenuItem_Click);
-            // 
-            // issueBookToolStripMenuItem
-            // 
-            this.issueBookToolStripMenuItem.Name = "issueBookToolStripMenuItem";
-            this.issueBookToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.issueBookToolStripMenuItem.Text = "Issue Book";
-            this.issueBookToolStripMenuItem.Click += new System.EventHandler(this.issueBookToolStripMenuItem_Click);
-            // 
-            // returnBookToolStripMenuItem
-            // 
-            this.returnBookToolStripMenuItem.Name = "returnBookToolStripMenuItem";
-            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.returnBookToolStripMenuItem.Text = "Return Book";
-            this.returnBookToolStripMenuItem.Click += new System.EventHandler(this.returnBookToolStripMenuItem_Click);
-            // 
-            // bookRecordToolStripMenuItem
-            // 
-            this.bookRecordToolStripMenuItem.Name = "bookRecordToolStripMenuItem";
-            this.bookRecordToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.bookRecordToolStripMenuItem.Text = "Book Record";
-            this.bookRecordToolStripMenuItem.Click += new System.EventHandler(this.bookRecordToolStripMenuItem_Click);
-            // 
-            // bookReportToolStripMenuItem
-            // 
-            this.bookReportToolStripMenuItem.Name = "bookReportToolStripMenuItem";
-            this.bookReportToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.bookReportToolStripMenuItem.Text = "Book Report";
-            this.bookReportToolStripMenuItem.Click += new System.EventHandler(this.bookReportToolStripMenuItem_Click);
-            // 
-            // studentToolStripMenuItem
-            // 
-            this.studentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addStudentToolStripMenuItem,
-            this.viewStudentInformationToolStripMenuItem});
-            this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.studentToolStripMenuItem.Text = "Student";
-            // 
-            // addStudentToolStripMenuItem
-            // 
-            this.addStudentToolStripMenuItem.Name = "addStudentToolStripMenuItem";
-            this.addStudentToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.addStudentToolStripMenuItem.Text = "Add Student";
-            this.addStudentToolStripMenuItem.Click += new System.EventHandler(this.addStudentToolStripMenuItem_Click);
-            // 
-            // viewStudentInformationToolStripMenuItem
-            // 
-            this.viewStudentInformationToolStripMenuItem.Name = "viewStudentInformationToolStripMenuItem";
-            this.viewStudentInformationToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.viewStudentInformationToolStripMenuItem.Text = "View Student Information";
-            this.viewStudentInformationToolStripMenuItem.Click += new System.EventHandler(this.viewStudentInformationToolStripMenuItem_Click);
             // 
             // panelMenu
             // 
@@ -162,9 +61,9 @@
             this.panelMenu.Controls.Add(this.BtnViewBook);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 24);
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 662);
+            this.panelMenu.Size = new System.Drawing.Size(220, 686);
             this.panelMenu.TabIndex = 4;
             // 
             // BtnLogout
@@ -179,7 +78,7 @@
             this.BtnLogout.IconColor = System.Drawing.Color.Gainsboro;
             this.BtnLogout.IconSize = 32;
             this.BtnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLogout.Location = new System.Drawing.Point(0, 602);
+            this.BtnLogout.Location = new System.Drawing.Point(0, 626);
             this.BtnLogout.Name = "BtnLogout";
             this.BtnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.BtnLogout.Rotation = 0D;
@@ -273,7 +172,7 @@
             this.panelTitleBar.Controls.Add(this.lblTitleChildForm);
             this.panelTitleBar.Controls.Add(this.iconCurrentChildForm);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(220, 24);
+            this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1070, 80);
             this.panelTitleBar.TabIndex = 6;
@@ -357,7 +256,7 @@
             // 
             this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(24)))), ((int)(((byte)(58)))));
             this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShadow.Location = new System.Drawing.Point(220, 104);
+            this.panelShadow.Location = new System.Drawing.Point(220, 80);
             this.panelShadow.Name = "panelShadow";
             this.panelShadow.Size = new System.Drawing.Size(1070, 9);
             this.panelShadow.TabIndex = 7;
@@ -366,9 +265,9 @@
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(220, 113);
+            this.panelDesktop.Location = new System.Drawing.Point(220, 89);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1070, 573);
+            this.panelDesktop.Size = new System.Drawing.Size(1070, 597);
             this.panelDesktop.TabIndex = 8;
             // 
             // mdi_user
@@ -380,15 +279,12 @@
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip;
             this.Name = "mdi_user";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student";
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BtnHome)).EndInit();
@@ -396,24 +292,11 @@
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         #endregion
 
-
-        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.ToolStripMenuItem bookToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewBookToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewBooksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addStudentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewStudentInformationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem issueBookToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem returnBookToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookRecordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bookReportToolStripMenuItem;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
