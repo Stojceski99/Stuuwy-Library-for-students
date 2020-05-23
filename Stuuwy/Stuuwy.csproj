@@ -135,6 +135,12 @@
     <Compile Include="Return Book.Designer.cs">
       <DependentUpon>Return Book.cs</DependentUpon>
     </Compile>
+    <Compile Include="Update Book Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Update Book Info.Designer.cs">
+      <DependentUpon>Update Book Info.cs</DependentUpon>
+    </Compile>
     <Compile Include="View Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Return Book.resx">
       <DependentUpon>Return Book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Update Book Info.resx">
+      <DependentUpon>Update Book Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View Books.resx">
       <DependentUpon>View Books.cs</DependentUpon>

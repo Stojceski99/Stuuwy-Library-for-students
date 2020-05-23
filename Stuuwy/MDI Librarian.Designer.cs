@@ -49,6 +49,7 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.lblTitleChildForm = new System.Windows.Forms.Label();
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
+            this.BtnUpdateBookInfo = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnHome)).BeginInit();
@@ -59,6 +60,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.BtnUpdateBookInfo);
             this.panelMenu.Controls.Add(this.BtnViewStudentInfo);
             this.panelMenu.Controls.Add(this.BtnAddStudent);
             this.panelMenu.Controls.Add(this.BtnBookReport);
@@ -70,7 +72,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(220, 599);
+            this.panelMenu.Size = new System.Drawing.Size(220, 639);
             this.panelMenu.TabIndex = 5;
             // 
             // BtnViewStudentInfo
@@ -181,7 +183,7 @@
             this.BtnLogout.IconColor = System.Drawing.Color.Gainsboro;
             this.BtnLogout.IconSize = 32;
             this.BtnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLogout.Location = new System.Drawing.Point(0, 539);
+            this.BtnLogout.Location = new System.Drawing.Point(0, 579);
             this.BtnLogout.Name = "BtnLogout";
             this.BtnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.BtnLogout.Rotation = 0D;
@@ -267,7 +269,7 @@
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(220, 89);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(976, 510);
+            this.panelDesktop.Size = new System.Drawing.Size(976, 550);
             this.panelDesktop.TabIndex = 11;
             // 
             // panelShadow
@@ -368,11 +370,35 @@
             this.iconCurrentChildForm.TabIndex = 0;
             this.iconCurrentChildForm.TabStop = false;
             // 
+            // BtnUpdateBookInfo
+            // 
+            this.BtnUpdateBookInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnUpdateBookInfo.FlatAppearance.BorderSize = 0;
+            this.BtnUpdateBookInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUpdateBookInfo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.BtnUpdateBookInfo.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnUpdateBookInfo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.BtnUpdateBookInfo.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+            this.BtnUpdateBookInfo.IconColor = System.Drawing.Color.Gainsboro;
+            this.BtnUpdateBookInfo.IconSize = 32;
+            this.BtnUpdateBookInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnUpdateBookInfo.Location = new System.Drawing.Point(0, 500);
+            this.BtnUpdateBookInfo.Name = "BtnUpdateBookInfo";
+            this.BtnUpdateBookInfo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.BtnUpdateBookInfo.Rotation = 0D;
+            this.BtnUpdateBookInfo.Size = new System.Drawing.Size(220, 60);
+            this.BtnUpdateBookInfo.TabIndex = 10;
+            this.BtnUpdateBookInfo.Text = "Update Book Info";
+            this.BtnUpdateBookInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnUpdateBookInfo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnUpdateBookInfo.UseVisualStyleBackColor = true;
+            this.BtnUpdateBookInfo.Click += new System.EventHandler(this.BtnUpdateBookInfo_Click);
+            // 
             // MDI_Librarian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 599);
+            this.ClientSize = new System.Drawing.Size(1196, 639);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
@@ -382,7 +408,7 @@
             this.IsMdiContainer = true;
             this.Name = "MDI_Librarian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MDI Librarian";
+            this.Text = "Stuuwy Librarian";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BtnHome)).EndInit();
@@ -412,6 +438,7 @@
         private FontAwesome.Sharp.IconButton BtnViewStudentInfo;
         private FontAwesome.Sharp.IconButton BtnAddStudent;
         private FontAwesome.Sharp.IconButton BtnBookReport;
+        private FontAwesome.Sharp.IconButton BtnUpdateBookInfo;
     }
 }
 

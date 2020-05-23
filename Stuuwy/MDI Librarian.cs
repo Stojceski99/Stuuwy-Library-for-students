@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,6 @@ namespace Stuuwy
 {
     public partial class MDI_Librarian : Form
     {
-        private int childFormNumber = 0;
         private IconButton currentBtn;
         private Panel leftBoarderBtn;
         private Form CurrentChildForm;
@@ -106,22 +106,6 @@ namespace Stuuwy
             childForm.Show();
             lblTitleChildForm.Text = childForm.Text;
         }
-
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
-        }
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
         private void BtnAddNewBook_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
@@ -157,7 +141,11 @@ namespace Stuuwy
             ActivateButton(sender, RGBColors.color6);
             OpenChildForm(new View_Student_Information());
         }
-
+        private void BtnUpdateBookInfo_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color7);
+            OpenChildForm(new Update_Book_Info());
+        }
         private void BtnHome_Click(object sender, EventArgs e)
         {
             CurrentChildForm.Close();
