@@ -127,6 +127,10 @@ namespace Stuuwy
         {
             label1.Text = "Enter student's semestar";
         }
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            label1.Text = "Enter student's programa";
+        }
         private void studentFirst_Leave(object sender, EventArgs e)
         {
             firstNameValidation = ValidateString(studentFirst, label4);

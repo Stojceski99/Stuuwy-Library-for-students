@@ -115,10 +115,11 @@ namespace Stuuwy
             // MAKE SURE YOU ENABLE FORWARDING POP/IMAP ON YOUR GMAIL ACCOUNT [Settings, Forwarding POP/IMAP, Enable IMAP, Save Changes]
             // Allow less secure apps: ON [https://myaccount.google.com/lesssecureapps] 
 
-            MailMessage mail = new MailMessage("stuuwylibrary@gmail.com", textBox2.Text, "Reminder for your book return date", textBox3.Text);
+            MailMessage mail = new MailMessage("stuuwylibrary@gmail.com", textBox2.Text, "Потсетник за враќање на книгата", textBox3.Text);
             mail.Priority = MailPriority.High;
             smtp.Send(mail);
             MessageBox.Show("Mail successfully sent.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            textBox3.Text = "";
         }
     }
 }

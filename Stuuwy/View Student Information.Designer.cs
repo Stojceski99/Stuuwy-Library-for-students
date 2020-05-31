@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_Student_Information));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.studentPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.studentEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.studentSemestar = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentPassword = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,6 +101,24 @@
             this.panel2.Size = new System.Drawing.Size(748, 223);
             this.panel2.TabIndex = 15;
             this.panel2.Visible = false;
+            // 
+            // studentPassword
+            // 
+            this.studentPassword.Location = new System.Drawing.Point(544, 156);
+            this.studentPassword.Name = "studentPassword";
+            this.studentPassword.Size = new System.Drawing.Size(126, 20);
+            this.studentPassword.TabIndex = 24;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
+            this.label10.Location = new System.Drawing.Point(448, 156);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 16);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Password";
             // 
             // studentEmail
             // 
@@ -255,7 +273,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label1.Location = new System.Drawing.Point(9, 309);
+            this.label1.Location = new System.Drawing.Point(12, 196);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 12;
@@ -295,6 +313,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "by Student Programa";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -363,24 +382,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(742, 234);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // studentPassword
-            // 
-            this.studentPassword.Location = new System.Drawing.Point(544, 156);
-            this.studentPassword.Name = "studentPassword";
-            this.studentPassword.Size = new System.Drawing.Size(126, 20);
-            this.studentPassword.TabIndex = 24;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(250)))), ((int)(((byte)(90)))));
-            this.label10.Location = new System.Drawing.Point(448, 156);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 16);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Password";
             // 
             // View_Student_Information
             // 
