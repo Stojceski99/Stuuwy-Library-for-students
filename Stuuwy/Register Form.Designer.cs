@@ -188,7 +188,6 @@
             this.studentEmail.Name = "studentEmail";
             this.studentEmail.Size = new System.Drawing.Size(169, 20);
             this.studentEmail.TabIndex = 13;
-            this.studentEmail.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             this.studentEmail.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
             // studentConPass
@@ -199,7 +198,6 @@
             this.studentConPass.PasswordChar = '*';
             this.studentConPass.Size = new System.Drawing.Size(169, 20);
             this.studentConPass.TabIndex = 12;
-            this.studentConPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // studentPass
             // 
@@ -209,7 +207,6 @@
             this.studentPass.PasswordChar = '*';
             this.studentPass.Size = new System.Drawing.Size(169, 20);
             this.studentPass.TabIndex = 11;
-            this.studentPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // studentIndeks
             // 
@@ -218,7 +215,6 @@
             this.studentIndeks.Name = "studentIndeks";
             this.studentIndeks.Size = new System.Drawing.Size(169, 20);
             this.studentIndeks.TabIndex = 10;
-            this.studentIndeks.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             this.studentIndeks.Leave += new System.EventHandler(this.studentIndeks_Leave);
             // 
             // studentLast
@@ -228,7 +224,6 @@
             this.studentLast.Name = "studentLast";
             this.studentLast.Size = new System.Drawing.Size(169, 20);
             this.studentLast.TabIndex = 9;
-            this.studentLast.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             this.studentLast.Leave += new System.EventHandler(this.studentLast_Leave);
             // 
             // studentFirst
@@ -238,7 +233,6 @@
             this.studentFirst.Name = "studentFirst";
             this.studentFirst.Size = new System.Drawing.Size(169, 20);
             this.studentFirst.TabIndex = 8;
-            this.studentFirst.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             this.studentFirst.Leave += new System.EventHandler(this.studentFirst_Leave);
             // 
             // label5

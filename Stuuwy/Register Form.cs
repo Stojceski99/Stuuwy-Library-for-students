@@ -74,14 +74,14 @@ namespace Stuuwy
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //Proverka na userName i email pri registracija - ako se zafateni obidise so drugo userName ili drug email
-            SqlDataAdapter da = new SqlDataAdapter("SELECT userName,email FROM Registered_Users WHERE userName COLLATE Latin1_general_CS_AS ='" + studentIndeks.Text + "' OR email COLLATE Latin1_general_CS_AS ='" + studentEmail.Text + "'", con);
+            //Proverka na indeks i email pri registracija - ako se zafateni obidise so drugo indeks ili drug email
+            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks ='" + studentIndeks.Text + "' OR studentEmail COLLATE Latin1_general_CS_AS ='" + studentEmail.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (dt.Rows.Count >= 1) // Ako postoi barem 1 kolona so takvi userName OR email
             {
-                label1.Text = "Username or email are already taken.";
-                MessageBox.Show("Username or email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
+                label1.Text = "Indeks or email are already taken.";
+                MessageBox.Show("Indeks or email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // ispisi poraka
                 return;
             }
             if (studentFirst.Text.Length == 0 || studentLast.Text.Length == 0 || studentIndeks.Text.Length == 0 || studentPrograma.Text.Length == 0 || studentPrograma.Text.Length == 0 ||studentPass.Text.Length == 0 || studentConPass.Text.Length == 0 || studentEmail.Text.Length == 0) // ako se prazni textBox-ovite
@@ -141,13 +141,6 @@ namespace Stuuwy
             loginForm lf = new loginForm();
             lf.Show();
         }
-
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 13)
-                button1_Click(sender, e);
-        }
-
         private void iconButton1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -176,7 +169,7 @@ namespace Stuuwy
         {
             if (!Regex.Match(textBox.Text, "^[0-9]+$").Success)
             {
-                label3.Text = label.Text + " is invalid.";
+                label1.Text = label.Text + " is invalid.";
                 MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Focus();
                 textBox.Text = "";
