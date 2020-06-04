@@ -43,6 +43,9 @@ namespace Stuuwy
             {
                 if (radioButton1.Checked)
                 {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                    con.Open();
                     dataGridView1.Columns.Clear();
                     dataGridView1.Refresh();
                     String query = "SELECT * FROM Student_Information WHERE studentFirstName like('%" + textBox1.Text + "%') ";
@@ -55,6 +58,9 @@ namespace Stuuwy
                 }
                 if (radioButton2.Checked)
                 {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                    con.Open();
                     dataGridView1.Columns.Clear();
                     dataGridView1.Refresh();
                     String query = "SELECT * FROM Student_Information WHERE studentLastName like('%" + textBox1.Text + "%') ";
@@ -67,6 +73,9 @@ namespace Stuuwy
                 }
                 if (radioButton3.Checked)
                 {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                    con.Open();
                     dataGridView1.Columns.Clear();
                     dataGridView1.Refresh();
                     String query = "SELECT * FROM Student_Information WHERE studentIndeks like('%" + textBox1.Text + "%') ";
@@ -79,6 +88,9 @@ namespace Stuuwy
                 }
                 if (radioButton4.Checked)
                 {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                    con.Open();
                     dataGridView1.Columns.Clear();
                     dataGridView1.Refresh();
                     String query = "SELECT * FROM Student_Information WHERE studentSemestar like('%" + textBox1.Text + "%') ";
@@ -91,6 +103,9 @@ namespace Stuuwy
                 }
                 if (radioButton5.Checked)
                 {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                    con.Open();
                     dataGridView1.Columns.Clear();
                     dataGridView1.Refresh();
                     String query = "SELECT * FROM Student_Information WHERE studentPrograma like('%" + textBox1.Text + "%') ";
@@ -151,7 +166,7 @@ namespace Stuuwy
             programaValidation = ValidateString(studentPrograma, label7);
         }
 
-        private void studentSemestar_Leave(object sender, EventArgs e)
+        private void studentSemestar_Leave(object sender, EventArgs e) // Ne e predvideno brojka pogolema od 8 --> treba nov regex [1-8]
         {
             semestarValidation = ValidateInteger(studentSemestar, label8);
         }
@@ -164,11 +179,10 @@ namespace Stuuwy
         {
             if (con.State == ConnectionState.Open)
                 con.Close();
-            
-            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + studentIndeks.Text + "' OR studentEmail='" + studentEmail.Text + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT studentIndeks,studentEmail FROM Student_Information WHERE studentIndeks='" + studentIndeks.Text + "' AND studentEmail='" + studentEmail.Text + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            if (dt.Rows.Count > 1)  // POSSIBLE BUG  !!!!!!!
+            if (dt.Rows.Count >= 1)  // POSSIBLE BUG  !!!!!!!
             {
                 label3.Text = "Student Indeks or Student Email are already taken.";
                 MessageBox.Show("Student Indeks or Student Email are already taken.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -180,7 +194,7 @@ namespace Stuuwy
                 MessageBox.Show("Please fill all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (firstNameValidation && lastNameValidation && indeksValidation && programaValidation && semestarValidation && emailValidation)
+            if (firstNameValidation && lastNameValidation && indeksValidation && programaValidation && semestarValidation && emailValidation) // BUG must update indeks and email at the same time
             {
                 try
                 {
@@ -192,6 +206,7 @@ namespace Stuuwy
                     cmd.ExecuteNonQuery();
                     FillGrid();
                     MessageBox.Show("Student information updated successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearBox();
                     con.Close();
                 }
                 catch (Exception exp)
@@ -206,11 +221,12 @@ namespace Stuuwy
                 MessageBox.Show("Something went wrong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) // BUG: pri prvoto selektiranje vo text polinjata ne se refreshira novi vrednosti ako se klikni na nova cell
         {
             if (con.State == ConnectionState.Open)
                 con.Close();
             con.Open();
+            ClearBox();
             panel2.Visible = true;
             int i;
             i = Convert.ToInt32(dataGridView1.SelectedCells[0].Value.ToString());
@@ -281,6 +297,9 @@ namespace Stuuwy
         }
         public void FillGrid()
         {
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            con.Open();
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
 
@@ -291,6 +310,16 @@ namespace Stuuwy
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+        }
+        private void ClearBox()
+        {
+            studentFirst.Text = "";
+            studentLast.Text = "";
+            studentIndeks.Text = "";
+            studentPrograma.Text = "";
+            studentSemestar.Text = "";
+            studentEmail.Text = "";
+            studentPassword.Text = "";
         }
     }
 } 

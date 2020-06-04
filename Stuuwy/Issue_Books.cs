@@ -133,6 +133,7 @@ namespace Stuuwy
                 SqlCommand cmdUpdate = new SqlCommand(queryUpdate, con);
                 cmdUpdate.ExecuteNonQuery();
 
+                ClearBox();
                 MessageBox.Show("Book issued successfully.", "Inforamation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -151,6 +152,7 @@ namespace Stuuwy
             txt_programa.Text = "";
             txt_semestar.Text = "";
             txt_email.Text = "";
+            txt_bookName.Text = "";
         }
         private int CheckAvailability (int checkBookQuantity)
         {

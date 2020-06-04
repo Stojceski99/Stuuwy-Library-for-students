@@ -35,7 +35,7 @@ namespace Stuuwy
                 if (con.State == ConnectionState.Open)
                     con.Close();
                 con.Open();
-                String query = "UPDATE  Book_Information SET bookName='" + txt_BookName.Text + "',bookAuthor='" + txt_AuthorName.Text + "',bookPublisherName='" + txt_PublisherName.Text + "',bookPurchaseDate='" + dateTimePicker1.Value.ToString() + "',bookPrice=" + txt_Price.Text + ",bookQuantity='" + txt_Quantity.Text + "' WHERE ID =" + i + "";
+                String query = "UPDATE  Book_Information SET bookName='" + txt_BookName.Text + "',bookAuthor='" + txt_AuthorName.Text + "',bookPublisherName='" + txt_PublisherName.Text + "',bookPurchaseDate='" + dateTimePicker1.Value.ToString() + "',bookPrice=" + txt_Price.Text + ",availableQuantity='" + txt_Quantity.Text + "' WHERE ID =" + i + "";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 Display_Grid();
@@ -79,7 +79,7 @@ namespace Stuuwy
                     txt_PublisherName.Text = dr["bookPublisherName"].ToString();
                     dateTimePicker1.Text = (dr["bookPurchaseDate"].ToString()); // dateTimePicker1.Text = Convert.ToDateTime((dr["bookPurchaseDate"].ToString())); -> ERROR ????
                     txt_Price.Text = dr["bookPrice"].ToString();
-                    txt_Quantity.Text = dr["bookQuantity"].ToString();
+                    txt_Quantity.Text = dr["availableQuantity"].ToString();
                 }
             }
             catch (Exception exp)

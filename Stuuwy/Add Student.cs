@@ -145,6 +145,7 @@ namespace Stuuwy
             studentIndeks.Text = "";
             studentPrograma.Text = "";
             studentSemestar.Text = "";
+            studentPassword.Text = "";
             studentEmail.Text = "";
         }
 

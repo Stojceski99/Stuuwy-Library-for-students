@@ -109,7 +109,7 @@ namespace Stuuwy
             smtp.UseDefaultCredentials = false;
 
             // Username, password from admin
-            smtp.Credentials = new NetworkCredential("stuuwylibrary@gmail.com", "hubabahu123");
+            smtp.Credentials = new NetworkCredential("stuuwylibrary@gmail.com", "stuuwyLibraryAdmin123!");
 
             //FROM, TO, SUBJECT, BODY
             // MAKE SURE YOU ENABLE FORWARDING POP/IMAP ON YOUR GMAIL ACCOUNT [Settings, Forwarding POP/IMAP, Enable IMAP, Save Changes]
