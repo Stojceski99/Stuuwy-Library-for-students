@@ -156,6 +156,7 @@
             this.txt_Indeks.Name = "txt_Indeks";
             this.txt_Indeks.Size = new System.Drawing.Size(163, 20);
             this.txt_Indeks.TabIndex = 9;
+            this.txt_Indeks.Leave += new System.EventHandler(this.txt_Indeks_Leave);
             // 
             // txt_first
             // 

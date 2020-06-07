@@ -8,17 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Stuuwy
 {
     public partial class Issue_Books : Form
     {
+        bool indeksValidaiton = false;
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-V7SNEIV;Initial Catalog=Stuuwy;Integrated Security=True");
         public Issue_Books()
         {
             InitializeComponent();
         }
 
+        private void txt_Indeks_Leave(object sender, EventArgs e)
+        {
+            indeksValidaiton = ValidateInteger(txt_Indeks, label1);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             int i = 0;
@@ -168,6 +174,21 @@ namespace Stuuwy
                 checkBookQuantity = Convert.ToInt32(drCheck["availableQuantity"].ToString());
             }
             return checkBookQuantity;
+        }
+        public bool ValidateInteger(TextBox textBox, Label label)
+        {
+            if (!Regex.Match(textBox.Text, "^[0-9]+$").Success)
+            {
+                label9.Text = label.Text + " is invalid.";
+                MessageBox.Show("Invalid " + label.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus();
+                textBox.Text = "";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
